@@ -16,7 +16,8 @@ gulp.task('build:js', function (done) {
         ' * Licensed under the <%= pkg.license %> license',
         ' */',
         ''].join('\n');
-    gulp.src('src/js/*.js')
+
+    gulp.src('src/*.js')
         .pipe(concat('weui.js'))
         .pipe(header(notes, {pkg: pkg}))
         .pipe(gulp.dest('dist'))
@@ -27,14 +28,21 @@ gulp.task('build:js', function (done) {
 });
 
 gulp.task('build:css', function(done){
-    gulp.src('src/css/*.css')
+    gulp.src('src/*.css')
         .pipe(concat('weui-ext.css'))
         .pipe(gulp.dest('dist'))
         .on('end',done);
 });
 
+gulp.task('build:demos', function(done){
+    gulp.src('src/*')
+        .pipe(gulp.dest('example/demos/mods'))
+        .on('end',done);
+});
+
+
 // 默认任务
-gulp.task('default', ['build:js','build:css'], function(){
+gulp.task('default', ['build:js', 'build:css'], function(){
     browserSync.reload();
 });
 
@@ -43,7 +51,7 @@ gulp.task('watch', ['default', 'server'], function (){
     gulp.watch('src/**/*.*', ['default']);
 });
 
-// 清扫
+// 清理
 gulp.task('clean', function() {  
   return gulp.src(['dist'], {read: false})
     .pipe(clean());

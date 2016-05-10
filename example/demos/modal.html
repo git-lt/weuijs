@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>WeUI</title>
+    <link rel="stylesheet" href="css/weui.css">
+    <link rel="stylesheet" href="mods/modal.css">
+</head>
+<body>
+<div class="container" id="container"><div class="dialog">
+<div class="hd">
+    <h2 class="page_title">弹出层示例</h2>
+</div>
+<div class="bd spacing">
+    <a href="javascript:;" class="weui_btn weui_btn_primary" id="showDialog1">提示框</a>
+    <a href="javascript:;" class="weui_btn weui_btn_primary" id="showDialog2">确认框</a>
+    <a href="javascript:;" class="weui_btn weui_btn_primary" id="showDialog3">输入框</a>
+    <a href="javascript:;" class="weui_btn weui_btn_primary" id="showDialog4">操作框</a>
+    <a href="javascript:;" class="weui_btn weui_btn_primary" id="showDialog5">popup</a>
+    <a href="javascript:;" class="weui_btn weui_btn_primary" id="showDialog6">loading</a>
+    <a href="javascript:;" class="weui_btn weui_btn_primary" id="showDialog7">toast-纯文字</a>
+    <a href="javascript:;" class="weui_btn weui_btn_primary" id="showDialog13">toast-带图标</a>
+    <a href="javascript:;" class="weui_btn weui_btn_primary" id="showDialog8">offcanvas-top</a>
+    <a href="javascript:;" class="weui_btn weui_btn_primary" id="showDialog9">offcanvas-bottom</a>
+    <a href="javascript:;" class="weui_btn weui_btn_primary" id="showDialog10">offcanvas-left</a>
+    <a href="javascript:;" class="weui_btn weui_btn_primary" id="showDialog11">offcanvas-right</a>
+    <a href="javascript:;" class="weui_btn weui_btn_primary" id="showDialog12">offcanvas-自定义</a>
+</div>
+<br>
+</div></div>
+
+<script type="text/html" id="tpl1">
+<div>
+  <a href="javascript:;" class="close-popup weui_dialog_close"><i class="weui_icon_cancel"></i></a>
+  <article class="weui_article">
+        <h1>大标题</h1>
+        <section>
+            <h2 class="title">章标题</h2>
+            <section>
+                <h3>1.1 节标题</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute</p>
+            </section>
+            <section>
+                <h3>1.2 节标题</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </section>
+        </section>
+    </article>
+    </div>
+</script>
+
+<script src="lib/zepto.min.js"></script>
+<script src="lib/zepto.ext.js"></script>
+<script src="mods/modal.js"></script>
+
+<script type="text/javascript">
+    $('#showDialog1').click(function(){
+        $.alert('这是一个弹框！','标题', function(){
+            $.alert('第二个','标题');
+        });
+    });
+
+    $('#showDialog2').click(function(){
+        $.confirm('这是一个弹框！','标题', function(){
+            $.alert('确认');
+        }, function(){
+            $.alert('取消');
+        });
+    });
+
+    $('#showDialog3').click(function(){
+        $.prompt('请输入留言信息', function(v){ alert('你输入的是 '+v);});
+    });
+
+    $('#showDialog4').click(function(){
+        var buttons1 = [
+            {
+              text: '请选择',
+              label: true
+            },
+            {
+              text: '卖出',
+              bold: true,
+              color: 'danger',
+              onClick: function() {
+                $.alert("你选择了“卖出“");
+              }
+            },
+            {
+              text: '买入',
+              onClick: function() {
+                $.alert("你选择了“买入“");
+              }
+            }
+          ];
+        var buttons2 = [{
+              text: '取消',
+              bg: 'danger'
+            }
+          ];
+        var groups = [buttons1, buttons2];
+        $.actions(groups);
+    });
+
+    $('#showDialog5').click(function(){
+        $.popup($('#tpl1').html());
+    });
+    
+    $('#showDialog6').click(function(){
+        $.loading();
+        setTimeout(function(){$.loading()}, 3000)
+    });
+
+    $('#showDialog7').click(function(){
+        $.toast('操作成功')
+    });
+    
+    $('#showDialog8').click(function(){
+        $.offcanvas('<div class="weui_offcanvas"><a href="javascript:;" class="close-offcanvas weui_dialog_close"><i class="weui_icon_cancel"></i></a> <p>这里是offcanvas的内容, 从顶部显示！<a class="btn-click" href="javascript:;">再打开一个左边的</a></p></div>', '', function($el){
+          $el.on('click', '.btn-click',function(){
+            $.offcanvas('<div class="weui_offcanvas"><a href="javascript:;" class="close-offcanvas weui_dialog_close"><i class="weui_icon_cancel"></i></a> <p>这里是offcanvas的内容, 从左边显示！ <a class="btn-click" href="javascript:;">事件点击</a></p></div>', 'left', function($el){
+              $el.on('click', '.btn-click', function(){
+                alert('这是第二个 offcanvas 的事件！');
+              });
+            });
+          })
+        })
+    });
+
+    $('#showDialog9').click(function(){
+        $.offcanvas('<div class="weui_offcanvas"><a href="javascript:;" class="close-offcanvas weui_dialog_close"><i class="weui_icon_cancel"></i></a> <p>这里是offcanvas的内容, 从底部显示！ <a class="btn-click" href="javascript:;">事件点击</a></p></div>', 'bottom', function($el){
+          $el.on('click', '.btn-click',function(){
+            alert('事件2被触发了!');
+          })
+        })
+    });
+
+    $('#showDialog10').click(function(){
+        $.offcanvas('<div class="weui_offcanvas"><a href="javascript:;" class="close-offcanvas weui_dialog_close"><i class="weui_icon_cancel"></i></a> <p>这里是offcanvas的内容, 从左边显示！ <a class="btn-click" href="javascript:;">事件点击</a></p></div>', 'left', function($el){
+          $el.on('click', '.btn-click',function(){
+            alert('事件3被触发了!');
+          })
+        })
+    });
+
+    $('#showDialog11').click(function(){
+        $.offcanvas('<div class="weui_offcanvas"><a href="javascript:;" class="close-offcanvas weui_dialog_close"><i class="weui_icon_cancel"></i></a> <p>这里是offcanvas的内容, 从右边显示！ <a class="btn-click" href="javascript:;">事件点击</a></p></div>', 'right', function($el){
+          $el.on('click', '.btn-click',function(){
+            alert('事件4被触发了!');
+          })
+        })
+    });
+
+    $('#showDialog12').click(function(){
+        $.offcanvas({
+          content:'<div class="weui_offcanvas"><a href="javascript:;" class="close-offcanvas weui_dialog_close"><i class="weui_icon_cancel"></i></a> <p style="font-size:12px; color:#888;">长按识别二维码</p><p><img src="http://7xi480.com1.z0.glb.clouddn.com/wx_store_preview.png" width="140" /></p></div>',
+          contentStyle:{width:'200px', top:'20%', left:'50%', 'margin-left':'-100px', 'border-radius':'5px', padding:'20px 0 0', 'text-align':'center'}
+        })
+    });
+
+    $('#showDialog13').click(function(){
+        $.toast('操作成功', '<i class="weui_icon_toast"></i>');
+    });
+</script>
+</body>
+</html>

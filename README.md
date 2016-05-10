@@ -16,12 +16,12 @@ WeUI 本身只包含样式，不包含 `javascript` 功能。为了方便使用�
 主要封装了以下组件
 
 - 弹出层 包含 dialog toast offcanvas loading actions 
-- 消息提示：Notification
-- 选项卡：Tabs
+- 消息提示：notification
+- 选项卡：tabs
 - 折叠面板：accordion
-- 搜索：searchBar
-- 表单验证：form
-- 图片上传：validator
+- 搜索：searchbar
+- 表单验证：validator
+- 图片上传：imguploader
 
 ## 开始上手
 

@@ -3,8 +3,10 @@
  * Copyright 2016
  * Licensed under the MIT license
  */
-+function ($) {
-    'use strict';
+
+
++function ($, window, undefined) {
+    "use strict";
     var _modalTemplateTempDiv = document.createElement('div');
 
     $.modalStack = [];
@@ -432,4 +434,8 @@
         modalPreloaderTitle: '加载中',
         modalContainer : document.body ? document.body : 'body'
     };
-}(Zepto);
+}(Zepto, window, undefined);
+
+
+
+

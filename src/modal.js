@@ -1,4 +1,4 @@
-;function ($, window, undefined) {
++function ($, window, undefined) {
     "use strict";
     var _modalTemplateTempDiv = document.createElement('div');
 

@@ -3,3 +3,4 @@ publish.sh
 node_modules
 *.DS_Store
 npm-debug.log
+example
