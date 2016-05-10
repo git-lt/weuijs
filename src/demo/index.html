@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>WeUI.js</title>
+    <meta name="keywords" content="微信,WeUI,jQuery,Zepto,WeUI.js">
+    <meta name="description" content="WeUI 为微信 Web 服务量身设计">
+    <link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/0.4.1/weui.css">
+    <style>
+        html, body, .container{
+            height: 100%;
+        }
+        body{
+            background-color: #efeff4;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .container {
+
+        }
+
+        .padding {
+            padding: 15px;
+        }
+    </style>
+</head>
+<body ontouchstart>
+
+<div class="container">
+    <div class="weui_tab">
+        <!--<div class="weui_navbar">-->
+            <!--<div class="weui_navbar_item">-->
+                <!--按钮-->
+            <!--</div>-->
+            <!--<div class="weui_navbar_item">-->
+                <!--表单-->
+            <!--</div>-->
+            <!--<div class="weui_navbar_item">-->
+                <!--搜索-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="weui_tab_bd">
+            <div class="weui_tab_bd_item" style="display: none;">
+                <div class="padding">
+                    <a href="javascript:;" id="btnConfirm" class="weui_btn weui_btn_primary">Confirm</a>
+                    <a href="javascript:;" id="btnAlert" class="weui_btn weui_btn_warn">Alert</a>
+                    <a href="javascript:;" id="btnDialog" class="weui_btn weui_btn_default">Dialog</a>
+                    <a href="javascript:;" id="btnToast" class="weui_btn weui_btn_primary">Toast</a>
+                    <a href="javascript:;" id="btnLoading" class="weui_btn weui_btn_default">Loading</a>
+                    <a href="javascript:;" id="btnTopTips" class="weui_btn weui_btn_default">TopTips</a>
+                    <a href="javascript:;" id="btnActionSheet" class="weui_btn weui_btn_default">ActionSheet</a>
+                </div>
+            </div>
+            <div class="weui_tab_bd_item" style="display: none;">
+                <!--BEGIN 上传-->
+                <div class="weui_cells weui_cells_form">
+                    <div class="weui_cell">
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <div id="uploader"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="weui_btn_area">
+                    <a href="javascript:;" id="btnUpload" class="weui_btn weui_btn_primary">上传</a>
+                </div>
+                <!--END 上传-->
+
+                <div class="weui_cells_title">表单</div>
+                <form id="form">
+                    <div class="weui_cells weui_cells_form">
+                        <div class="weui_cell">
+                            <div class="weui_cell_hd"><label class="weui_label">手机号</label></div>
+                            <div class="weui_cell_bd weui_cell_primary">
+                                <input class="weui_input" type="tel" required pattern="[0-9]{11}" maxlength="11" placeholder="输入你现在的手机号" emptyTips="请输入手机号" notMatchTips="请输入正确的手机号">
+                            </div>
+                            <div class="weui_cell_ft">
+                                <i class="weui_icon_warn"></i>
+                            </div>
+                        </div>
+                        <div class="weui_cell weui_vcode">
+                            <div class="weui_cell_hd"><label class="weui_label">验证码</label></div>
+                            <div class="weui_cell_bd weui_cell_primary">
+                                <input class="weui_input" type="number" required placeholder="点击验证码更换" tips="请输入验证码">
+                            </div>
+                            <div class="weui_cell_ft">
+                                <i class="weui_icon_warn"></i>
+                                <img src="http://weui.github.io/weui/images/vcode.jpg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weui_btn_area">
+                        <a id="formSubmitBtn" href="javascript:" class="weui_btn weui_btn_primary">提交</a>
+                    </div>
+                </form>
+            </div>
+            <div class="weui_tab_bd_item">
+                <div class="search_bar_wrap" style="margin-top: 100px">
+
+                </div>
+            </div>
+        </div>
+        <div class="weui_tabbar">
+            <a href="javascript:;" class="weui_tabbar_item">
+                <div class="weui_tabbar_icon">
+                    <img src="https://weui.github.io/weui/images/icon_nav_button.png" alt="">
+                </div>
+                <p class="weui_tabbar_label">按钮</p>
+            </a>
+            <a href="javascript:;" class="weui_tabbar_item">
+                <div class="weui_tabbar_icon">
+                    <img src="https://weui.github.io/weui/images/icon_nav_msg.png" alt="">
+                </div>
+                <p class="weui_tabbar_label">表单</p>
+            </a>
+            <a href="javascript:;" class="weui_tabbar_item">
+                <div class="weui_tabbar_icon">
+                    <img src="http://weui.github.io/weui/images/icon_nav_search_bar.png" alt="">
+                </div>
+                <p class="weui_tabbar_label">搜索栏</p>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+<script src="//rawgit.com/wechatfe/vconsole/master/dist/vconsole.min.js"></script>
+<script src="../weui.js"></script>
+<script src="./example.js"></script>
+</body>
+</html>

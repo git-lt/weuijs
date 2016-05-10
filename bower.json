@@ -1,0 +1,19 @@
+{
+    "name": "weuijs",
+    "description": "JavaScript for WeUI",
+    "version": "0.0.1",
+    "main": "dist/weui.js",
+    "authors": [
+        "935486956@qq.com"
+    ],
+    "license": "MIT",
+    "homepage": "https://github.com/git-lt/weuijs",
+    "moduleType": [],
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ]
+}
