@@ -25,11 +25,6 @@ WeUI 本身只包含样式，不包含 `javascript` 功能。为了方便使用�
 
 [使用文档](http://git-lt.github.io/weuijs/index.html)
 
-
-## 文档
-
-参考 [Wiki](https://github.com/progrape/weui.js/wiki) 
-
 ## License
 
 The MIT License(http://opensource.org/licenses/MIT)
