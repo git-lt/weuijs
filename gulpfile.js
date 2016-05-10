@@ -36,7 +36,7 @@ gulp.task('build:css', function(done){
 
 gulp.task('build:demos', function(done){
     gulp.src('src/*')
-        .pipe(gulp.dest('example/demos/mods'))
+        .pipe(gulp.dest('demos/mods'))
         .on('end',done);
 });
 
