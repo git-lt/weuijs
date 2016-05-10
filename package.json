@@ -1,36 +1,37 @@
 {
-    "name": "weuijs",
-    "version": "0.0.1",
-    "description": "JavaScript for WeUI",
-    "main": "dist/weui.js",
-    "scripts": {
-        "build": "gulp",
-        "start": "gulp watch",
-        "test": "npm run build && gulp test"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git@github.com:git-lt/weuijs.git"
-    },
-    "keywords": [],
-    "author": "935486956@qq.com",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/git-lt/weuijs/issues"
-    },
-    "homepage": "https://github.com/git-lt/weuijs",
-    "devDependencies": {
-        "browser-sync": "^2.11.1",
-        "gulp": "^3.9.0",
-        "gulp-concat": "^2.6.0",
-        "gulp-header": "^1.7.1",
-        "gulp-order": "^1.1.1",
-        "gulp-rename": "^1.2.2",
-        "gulp-uglify": "^1.5.1",
-        "zepto": "^1.0.1"
-    },
-    "dependencies": {
-        "jquery": "^2.2.1",
-        "weui": "^0.4.1"
-    }
+  "name": "weuijs",
+  "version": "0.0.1",
+  "description": "JavaScript for WeUI",
+  "main": "dist/weui.js",
+  "scripts": {
+    "build": "gulp",
+    "start": "gulp watch",
+    "test": "npm run build && gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:git-lt/weuijs.git"
+  },
+  "keywords": [],
+  "author": "935486956@qq.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/git-lt/weuijs/issues"
+  },
+  "homepage": "https://github.com/git-lt/weuijs",
+  "devDependencies": {
+    "browser-sync": "^2.11.1",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-header": "^1.7.1",
+    "gulp-order": "^1.1.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.5.1",
+    "zepto": "^1.0.1"
+  },
+  "dependencies": {
+    "gulp-clean": "^0.3.2",
+    "jquery": "^2.2.1",
+    "weui": "^0.4.1"
+  }
 }

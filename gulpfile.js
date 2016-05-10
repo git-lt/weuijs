@@ -4,6 +4,7 @@ var concat = require('gulp-concat');
 var header = require('gulp-header');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
+var clean = require('gulp-clean');
 var browserSync = require('browser-sync');
 
 // 构建
@@ -27,8 +28,7 @@ gulp.task('build:js', function (done) {
 
 gulp.task('build:css', function(done){
     gulp.src('src/css/*.css')
-        .pipe(gulp.dest('dist'))
-        .pipe(concat('weui.ext.css'))
+        .pipe(concat('weui-ext.css'))
         .pipe(gulp.dest('dist'))
         .on('end',done);
 });
@@ -41,6 +41,12 @@ gulp.task('default', ['build:js','build:css'], function(){
 // 监听变动
 gulp.task('watch', ['default', 'server'], function (){
     gulp.watch('src/**/*.*', ['default']);
+});
+
+// 清扫
+gulp.task('clean', function() {  
+  return gulp.src(['dist'], {read: false})
+    .pipe(clean());
 });
 
 // 启动http浏览

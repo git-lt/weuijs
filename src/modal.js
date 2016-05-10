@@ -1,4 +1,4 @@
-+function ($) {
+;function ($, window, undefined) {
     "use strict";
     var _modalTemplateTempDiv = document.createElement('div');
 
@@ -427,4 +427,4 @@
         modalPreloaderTitle: '加载中',
         modalContainer : document.body ? document.body : 'body'
     };
-}(Zepto);
+}(Zepto, window, undefined);
