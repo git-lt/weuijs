@@ -13,6 +13,7 @@
             ($.modalStack.shift())();
         }
     };
+
     $.modal = function (params) {
         params = params || {};
         var modalHTML = '';
@@ -47,6 +48,7 @@
         $.openModal(modal, useCss3);
         return modal[0];
     };
+
     $.alert = function (text, title, callbackOk) {
         if (typeof title === 'function') {
             callbackOk = arguments[1];
@@ -60,6 +62,7 @@
             buttons: [ {text: defaults.modalButtonOk, onClick: callbackOk} ]
         });
     };
+
     $.confirm = function (text, title, callbackOk, callbackCancel) {
         if (typeof title === 'function') {
             callbackCancel = arguments[2];
@@ -111,6 +114,7 @@
             }
         });
     };
+
     $.loading = function (text) {
         if ($('.weui_loading_toast')[0]) { return $('.weui_loading_toast').remove();};
 
@@ -125,6 +129,7 @@
         l.push('</div></div>');
         $(defaults.modalContainer).append(l.join(''));
     };
+
     $.actions = function (params) {
         var modal, groupSelector, buttonSelector;
         params = params || [];
@@ -174,6 +179,7 @@
         $.openModal(modal, defaults.useCss3);
         return modal[0];
     };
+
     $.popup = function (modal) {
         if (typeof modal === 'string' && modal.indexOf('<') >= 0) {
             var _modal = document.createElement('div');
@@ -192,6 +198,7 @@
 
         return modal[0];
     };
+
     $.toast = function(msg, icon, duration) {
         var toastStr = [];
         toastStr.push('<div class="toast"><div class="weui_mask_transparent"></div>');
@@ -210,6 +217,7 @@
         });
         $.openModal($toast, true);
     };
+
     $.offcanvas=function(conHtml, position, onOpenedFn){
         var o = {
             useCss3:true,
@@ -246,6 +254,7 @@
         if(typeof o.onCloseAfter == 'function') $modal.one('closed', function(){ o.onCloseafter.call(this, $modal)});
         return $.openModal(modal, o.useCss3, o)
     }
+
     $.openModal = function (modal, useCss3, opt) {
         modal = $(modal);
         var isModal = modal.hasClass('modal'),
@@ -315,6 +324,7 @@
         }
         return true;
     };
+
     $.closeModal = function (modal, useCss3) {
         modal = $(modal || '.weui_dialog');
         if (typeof modal !== 'undefined' && modal.length === 0) {
@@ -363,6 +373,7 @@
 
         return true;
     };
+
     function handleClicks(e) {
         var clicked = $(this);
         var url = clicked.attr('href');
@@ -402,7 +413,9 @@
                 $.closeModal('.weui_offcanvas.modal_in', defaults.useCss3);
         }
     }
+
     $(document).on('click', '.weui_mask, .popup_overlay, .close-popup, .open-popup, .close-offcanvas', handleClicks);
+    
     var defaults =  $.modal.prototype.defaults  = {
         useCss3:true,
         modalStack: true,

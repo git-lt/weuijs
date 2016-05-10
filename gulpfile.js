@@ -1,8 +1,5 @@
 var pkg = require('./package.json');
 var gulp = require('gulp');
-var tap = require('gulp-tap');
-var babel = require('gulp-babel');
-var order = require('gulp-order');
 var concat = require('gulp-concat');
 var header = require('gulp-header');
 var uglify = require('gulp-uglify');
@@ -11,49 +8,33 @@ var browserSync = require('browser-sync');
 
 // 构建
 gulp.task('build:js', function (done) {
-    var banner = [
+    var notes = [
         '/*!',
-        ' * WeUI.js v<%= pkg.version %> (<%= pkg.homepage %>)',
+        ' * weui.js v<%= pkg.version %> (<%= pkg.homepage %>)',
         ' * Copyright <%= new Date().getFullYear() %>',
         ' * Licensed under the <%= pkg.license %> license',
         ' */',
         ''].join('\n');
-    gulp.src('src/*.js')
-        .pipe(tap(function (file) {
-            var content = file.contents.toString();
-            content = content.replace(/@VERSION/g, pkg.version);
-            file.contents = new Buffer(content);
-        }))
-        .pipe(babel({
-            presets: ['es2015']
-        }))
-        .pipe(order([
-            'weui.js',
-            'dialog.js',
-            'alert.js',
-            'toptips.js',
-            '*.js'
-        ]))
+    gulp.src('src/js/*.js')
         .pipe(concat('weui.js'))
-        .pipe(header(banner, {pkg: pkg}))
+        .pipe(header(notes, {pkg: pkg}))
         .pipe(gulp.dest('dist'))
         .pipe(uglify())
-        .pipe(rename(function (path) {
-            path.basename += '.min';
-        }))
+        .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest('dist'))
         .on('end', done);
 });
 
-// 示例
-gulp.task('build:example', function (done) {
-    gulp.src('src/example/**/*.*')
-        .pipe(gulp.dest('dist/example'))
-        .on('end', done);
+gulp.task('build:css', function(done){
+    gulp.src('src/css/*.css')
+        .pipe(gulp.dest('dist'))
+        .pipe(concat('weui.ext.css'))
+        .pipe(gulp.dest('dist'))
+        .on('end',done);
 });
 
 // 默认任务
-gulp.task('default', ['build:js', 'build:example'], function(){
+gulp.task('default', ['build:js','build:css'], function(){
     browserSync.reload();
 });
 
@@ -66,9 +47,9 @@ gulp.task('watch', ['default', 'server'], function (){
 gulp.task('server', function () {
     browserSync.init({
         server: {
-            baseDir: "./dist"
+            baseDir: "./"
         },
         port: 8088,
-        startPath: '/example'
+        startPath: 'demo'
     });
 });
