@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>WeUI</title>
+    <link rel="stylesheet" href="style/weui.css">
+    <link rel="stylesheet" href="style/ex.css">
+    <script src="http://static.qiakr.com/js/qk.mall.min.js"></script>
+    <script type="text/javascript">
+    /* fastclick */
+    !function(a){function b(b){if(b.targetTouches.length>1)return!0;q=b.target;var c=a(q).closest(".nofastclick");if(c.length>0||i(q))return!0;if(x){var d=window.getSelection();if(d.rangeCount&&!d.isCollapsed)return!0;if(b.targetTouches[0].identifier===y)return event.preventDefault(),!1;y=b.targetTouches[0].identifier}return m=!0,n=b.timeStamp,r=b.targetTouches[0].pageX,s=b.targetTouches[0].pageY,b.timeStamp-o<0&&(o=b.timeStamp),b.timeStamp-o<200&&b.preventDefault(),!0}function c(a){return m?(t=a.changedTouches[0].pageX,u=a.changedTouches[0].pageY,(Math.abs(t-r)>v||Math.abs(u-s)>v)&&(q=null,m=!1),!0):!0}function d(b){if(!m)return!0;if(b.timeStamp-o<200)return p=!0,!0;o=b.timeStamp,m=!1;var c=q.tagName.toLowerCase();if("label"==c){var d=j(q);if(d){var e=a(d);if("checkbox"==e.attr("type")||"radio"==e.attr("type")?e.attr("checked")?e.removeAttr("checked"):e.attr("checked","checked"):a(d).focus(),w)return!1;q=d}}else if(i(q)){if(b.timeStamp-n>100)return q=null,!1;var f;return x&&q.setSelectionRange&&0!==q.type.indexOf("date")&&"time"!==q.type?(f=q.value.length,q.setSelectionRange(f,f)):q.focus(),"select"!==c&&(q=null,b.preventDefault()),!1}return n=0,h(q)||(b.preventDefault(),k(q,b)),!1}function e(){m=!1,q=null}function f(b){var c=b.target,d=a(c).closest(".nofastclick");return d.length>0||i(c)?!0:q?b.touchEvent?!0:b.cancelable&&(!h(q)||p)?(b.stopImmediatePropagation?b.stopImmediatePropagation():b.propagationStopped=!0,b.stopPropagation(),b.preventDefault(),!1):!0:!0}function g(a){if(m)return m=!1,q=null,!0;if("submit"===a.target.type&&0===a.detail)return!0;var b=f(a);return b||(q=null),b}function h(a){switch(a.nodeName.toLowerCase()){case"button":case"select":case"textarea":if(a.disabled)return!0;break;case"input":if(x&&"file"===a.type||a.disabled)return!0;break;case"video":return!0}return/\bneedclick\b/.test(a.className)}function i(a){switch(a.nodeName.toLowerCase()){case"textarea":case"select":return!0;case"input":switch(a.type){case"button":case"checkbox":case"file":case"image":case"radio":case"submit":return!1}return!a.disabled&&!a.readOnly;default:return/\bneedfocus\b/.test(a.className)}}function j(a){return void 0!==a.control?a.control:a.htmlFor?document.getElementById(a.htmlFor):a.querySelector("button, input:not([type=hidden]), keygen, meter, output, progress, select, textarea")}function k(a,b){var c,d;document.activeElement&&document.activeElement!==a&&document.activeElement.blur(),d=b.changedTouches[0],c=document.createEvent("MouseEvents"),c.initMouseEvent("click",!0,!0,window,1,d.screenX,d.screenY,d.clientX,d.clientY,!1,!1,!1,!1,0,null),c.touchEvent=!0,a.dispatchEvent(c)}function l(){return"undefined"==typeof window.ontouchstart?!1:!0}{var m=!1,n=0,o=0,p=!1,q=null,r=0,s=0,t=0,u=0,v=4,w=navigator.userAgent.indexOf("Android")>0,x=/iP(ad|hone|od)/.test(navigator.userAgent),y=0;x&&/OS ([6-9]|\d{2})_\d/.test(navigator.userAgent)}a.needFocus=i,a.bindFastClick=function(){return l()?void a(document).ready(function(){w&&(document.addEventListener("mouseover",f,!0),document.addEventListener("mousedown",f,!0),document.addEventListener("mouseup",f,!0)),document.addEventListener("click",g,!0),a(document).on("touchstart",b).on("touchmove",c).on("touchend",d).on("touchcancel",e)}):!0},a.unbindFastClick=function(){return l()?(w&&(document.removeEventListener("mouseover",f,!0),document.removeEventListener("mousedown",f,!0),document.removeEventListener("mouseup",f,!0)),document.removeEventListener("click",g,!0),void a(document).off("touchstart",b).off("touchmove",c).off("touchend",d).off("touchcancel",e)):!0}}(Zepto);
+    $.bindFastClick();
+    </script>
+     
+    <style type="text/css">
+    body {min-width: 320px; max-width: 640px; margin:0 auto;}
+
+    .dialog .bd, .toast .bd { padding: 10px 15px 0; }
+    .bg-danger {background-color: #f44336; color:#fff;}
+    .color-danger {color:#f44336;}
+
+    .weui_loading_toast .weui_toast_content {margin-top: 60%;}
+
+    .weui_mask {opacity: 0; visibility: hidden; background: rgba(0, 0, 0, 0); -webkit-transition: background-color .3s; transition: background-color .3s; }
+    .weui_mask.weui_mask_visible,.popup-overlay.weui_mask_visible {opacity: 1; visibility: visible;background-color: rgba(0,0,0,.6);}
+    .weui_toast.onlytxt {min-height: 2em; padding: 8px 0 0;}
+    .weui_dialog {display: none;}
+    .weui_dialog.modal_in {display: block;}
+    .weui_dialog.modal_out {display: none;}
+    .weui_dialog_prompt .weui_cells_form {margin-top: 0;}
+
+    .weui_dialog_prompt { top:30%; }
+    
+    .weui_dialog_prompt .weui_dialog_ft {margin-top: 0;}
+    .weui_dialog_prompt .weui_dialog_ft:after {border:0;}
+    .weui_dialog_prompt .weui_dialog_ft a{position: relative;}
+    .weui_dialog_prompt .weui_dialog_ft a:after {content: " "; position: absolute; left: 0; top: 0; width: 1px; height: 100%; border-left: 1px solid #D5D5D6; color: #D5D5D6; -webkit-transform-origin: 0 0; transform-origin: 0 0; -webkit-transform: scaleX(0.5); transform: scaleX(0.5); }
+
+    /* actions */
+    .weui_actionsheet {background-color: transparent;}
+    .weui_actionsheet.modal_in { -webkit-transform: translate(0, 0); transform: translate(0, 0);}
+    .weui_actionsheet_menu { margin: 10px;border-radius: 5px;overflow: hidden;}
+    .weui_actionsheet_cell.label {color:#bbb;}
+    
+    /* toast */
+    .toast .weui_toast {-webkit-transition-property: transform, opacity; transition-property: transform, opacity; -webkit-transform: translate3d(0, 0, 0) scale(1.185); transform: translate3d(0, 0, 0) scale(1.185); }
+    .toast {background-color: rgba(255,255,255,0); -webkit-transition:background-color .2s; }
+    .toast.modal_in .weui_toast{-webkit-transition:all .2s linear;transition:all .2s linear; opacity: 1; -webkit-transform: scale(1); transform: scale(1);}
+    .toast.modal_out .weui_toast {-webkit-transition:all .2s linear;transition:all .2s linear; opacity: 0; -webkit-transform: scale(.7); transform: scale(.7);}
+    .toast.modal_in {background-color: rgba(255,255,255,.3);}
+    .toast.modal_out {background-color: rgba(255,255,255,0);}
+
+    /* popup */
+    .popup_overlay {position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); z-index: 10200; visibility: hidden; opacity: 0; -webkit-transition-duration: 400ms; transition-duration: 400ms; }
+    .popup_overlay.weui_mask_visible {z-index: 10200; opacity: 1; visibility: visible; }
+    .popup{position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 10400; background: #fff; box-sizing: border-box; display: none; overflow: auto; -webkit-overflow-scrolling: touch; -webkit-transition-property: -webkit-transform; transition-property: transform; -webkit-transform: translate3d(0, 100%, 0); transform: translate3d(0, 100%, 0); }
+    .popup.modal_in,.popup.modal_out{-webkit-transition-duration: 300ms; transition-duration: 300ms; }
+    .popup.modal_in{-webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+    .popup.modal_out{-webkit-transform: translate3d(0, 100%, 0); transform: translate3d(0, 100%, 0); }
+  
+    /* offcanvas */
+    .weui_offcanvas {position: absolute; z-index: 10400; background: #fff; box-sizing: border-box; display: none; overflow: hidden; -webkit-overflow-scrolling: touch; -webkit-transition-property: -webkit-transform; transition-property: transform; opacity: 0;}
+    .weui_offcanvas.bottom {height: auto; top:auto; right: 0; bottom:0; max-height: 100%; left:0; min-height: 40px; -webkit-transform: translate3d(0, 100%, 0); transform: translate3d(0, 100%, 0); }
+    .weui_offcanvas.left {top:0; right: auto; bottom:0; left:0; max-width: 100%; min-width: 40px;  -webkit-transform: translate3d(-100%, 0, 0); transform: translate3d(-100%, 0, 0); }
+    .weui_offcanvas.top {top:0; right: 0; bottom:auto; left:0; height: auto; max-height: 100%; min-height: 40px; -webkit-transform: translate3d(0, -100%, 0); transform: translate3d(0, -100%, 0); }
+    .weui_offcanvas.right {top:0; right: 0; bottom:0; left:auto; max-width: 100%; min-width: 40px; -webkit-transform: translate3d(100%, 0, 0); transform: translate3d(100%, 0, 0); }
+    
+    .weui_offcanvas.modal_in,.weui_offcanvas.modal_out {-webkit-transition:all .25s ease-in-out; transition:all .25s ease-in-out;}
+    .weui_offcanvas.modal_in{-webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); opacity: 1; }
+    .weui_offcanvas.modal_out{opacity: 0; }
+    .weui_offcanvas.bottom.modal_out{-webkit-transform: translate3d(0, 100%, 0); transform: translate3d(0, 100%, 0);}
+    .weui_offcanvas.left.modal_out{-webkit-transform: translate3d(-100%, 0, 0); transform: translate3d(-100%, 0, 0); }
+    .weui_offcanvas.top.modal_out{-webkit-transform: translate3d(0, -100%, 0); transform: translate3d(0, -100%, 0); }
+    .weui_offcanvas.right.modal_out{-webkit-transform: translate3d(100%, 0, 0); transform: translate3d(100%, 0, 0); }
+
+    .weui_dialog_close {position: absolute; top:5px; right: 5px; bottom: auto; left: auto; display: block; width: 30px; height: 30px; text-align: center;}
+    
+    .weui_offcanvas {padding:40px 20px;}
+    </style>
+</head>
+<body>
+<div class="container" id="container"><div class="dialog">
+<div class="hd">
+    <h2 class="page_title">弹出层示例</h2>
+</div>
+<div class="bd spacing">
+    <a href="javascript:;" class="weui_btn weui_btn_primary" id="showDialog1">提示框</a>
+    <a href="javascript:;" class="weui_btn weui_btn_primary" id="showDialog2">确认框</a>
+    <a href="javascript:;" class="weui_btn weui_btn_primary" id="showDialog3">输入框</a>
+    <a href="javascript:;" class="weui_btn weui_btn_primary" id="showDialog4">操作框</a>
+    <a href="javascript:;" class="weui_btn weui_btn_primary" id="showDialog5">popup</a>
+    <a href="javascript:;" class="weui_btn weui_btn_primary" id="showDialog6">loading</a>
+    <a href="javascript:;" class="weui_btn weui_btn_primary" id="showDialog7">toast-纯文字</a>
+    <a href="javascript:;" class="weui_btn weui_btn_primary" id="showDialog13">toast-带图标</a>
+    <a href="javascript:;" class="weui_btn weui_btn_primary" id="showDialog8">offcanvas-top</a>
+    <a href="javascript:;" class="weui_btn weui_btn_primary" id="showDialog9">offcanvas-bottom</a>
+    <a href="javascript:;" class="weui_btn weui_btn_primary" id="showDialog10">offcanvas-left</a>
+    <a href="javascript:;" class="weui_btn weui_btn_primary" id="showDialog11">offcanvas-right</a>
+    <a href="javascript:;" class="weui_btn weui_btn_primary" id="showDialog12">offcanvas-自定义</a>
+</div>
+<br>
+</div></div>
+<script type="text/html" id="tpl1">
+<div>
+  <a href="javascript:;" class="close-popup weui_dialog_close"><i class="weui_icon_cancel"></i></a>
+  <article class="weui_article">
+        <h1>大标题</h1>
+        <section>
+            <h2 class="title">章标题</h2>
+            <section>
+                <h3>1.1 节标题</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute</p>
+            </section>
+            <section>
+                <h3>1.2 节标题</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </section>
+        </section>
+    </article>
+    </div>
+</script>
+
+<script src="js/modal.js"></script>
+<script src="js/zepto.ext.js"></script>
+<script type="text/javascript">
+    $('#showDialog1').click(function(){
+        $.alert('这是一个弹框！','标题', function(){
+            $.alert('第二个','标题');
+        });
+    });
+
+    $('#showDialog2').click(function(){
+        $.confirm('这是一个弹框！','标题', function(){
+            $.alert('确认');
+        }, function(){
+            $.alert('取消');
+        });
+    });
+
+    $('#showDialog3').click(function(){
+        $.prompt('请输入留言信息', function(v){ alert('你输入的是 '+v);});
+    });
+
+    $('#showDialog4').click(function(){
+        var buttons1 = [
+            {
+              text: '请选择',
+              label: true
+            },
+            {
+              text: '卖出',
+              bold: true,
+              color: 'danger',
+              onClick: function() {
+                $.alert("你选择了“卖出“");
+              }
+            },
+            {
+              text: '买入',
+              onClick: function() {
+                $.alert("你选择了“买入“");
+              }
+            }
+          ];
+        var buttons2 = [{
+              text: '取消',
+              bg: 'danger'
+            }
+          ];
+        var groups = [buttons1, buttons2];
+        $.actions(groups);
+    });
+
+    $('#showDialog5').click(function(){
+        $.popup($('#tpl1').html());
+    });
+    
+    $('#showDialog6').click(function(){
+        $.loading();
+        setTimeout(function(){$.loading()}, 3000)
+    });
+
+    $('#showDialog7').click(function(){
+        $.toast('操作成功')
+    });
+    
+    $('#showDialog8').click(function(){
+        $.offcanvas('<div class="weui_offcanvas"><a href="javascript:;" class="close-offcanvas weui_dialog_close"><i class="weui_icon_cancel"></i></a> <p>这里是offcanvas的内容, 从顶部显示！<a class="btn-click" href="javascript:;">再打开一个左边的</a></p></div>', '', function($el){
+          $el.on('click', '.btn-click',function(){
+            $.offcanvas('<div class="weui_offcanvas"><a href="javascript:;" class="close-offcanvas weui_dialog_close"><i class="weui_icon_cancel"></i></a> <p>这里是offcanvas的内容, 从左边显示！ <a class="btn-click" href="javascript:;">事件点击</a></p></div>', 'left', function($el){
+              $el.on('click', '.btn-click', function(){
+                alert('这是第二个 offcanvas 的事件！');
+              });
+            });
+          })
+        })
+    });
+
+    $('#showDialog9').click(function(){
+        $.offcanvas('<div class="weui_offcanvas"><a href="javascript:;" class="close-offcanvas weui_dialog_close"><i class="weui_icon_cancel"></i></a> <p>这里是offcanvas的内容, 从底部显示！ <a class="btn-click" href="javascript:;">事件点击</a></p></div>', 'bottom', function($el){
+          $el.on('click', '.btn-click',function(){
+            alert('事件2被触发了!');
+          })
+        })
+    });
+
+    $('#showDialog10').click(function(){
+        $.offcanvas('<div class="weui_offcanvas"><a href="javascript:;" class="close-offcanvas weui_dialog_close"><i class="weui_icon_cancel"></i></a> <p>这里是offcanvas的内容, 从左边显示！ <a class="btn-click" href="javascript:;">事件点击</a></p></div>', 'left', function($el){
+          $el.on('click', '.btn-click',function(){
+            alert('事件3被触发了!');
+          })
+        })
+    });
+
+    $('#showDialog11').click(function(){
+        $.offcanvas('<div class="weui_offcanvas"><a href="javascript:;" class="close-offcanvas weui_dialog_close"><i class="weui_icon_cancel"></i></a> <p>这里是offcanvas的内容, 从右边显示！ <a class="btn-click" href="javascript:;">事件点击</a></p></div>', 'right', function($el){
+          $el.on('click', '.btn-click',function(){
+            alert('事件4被触发了!');
+          })
+        })
+    });
+
+    $('#showDialog12').click(function(){
+        $.offcanvas({
+          content:'<div class="weui_offcanvas"><a href="javascript:;" class="close-offcanvas weui_dialog_close"><i class="weui_icon_cancel"></i></a> <p style="font-size:12px; color:#888;">长按识别二维码</p><p><img src="http://7xi480.com1.z0.glb.clouddn.com/wx_store_preview.png" width="140" /></p></div>',
+          contentStyle:{width:'200px', top:'20%', left:'50%', 'margin-left':'-100px', 'border-radius':'5px', padding:'20px 0 0', 'text-align':'center'}
+        })
+    });
+
+    $('#showDialog13').click(function(){
+        $.toast('操作成功', '<i class="weui_icon_toast"></i>');
+    });
+</script>
+</body>
+</html>
