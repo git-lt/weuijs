@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>WeUI</title>
+    <link rel="stylesheet" href="lib/weui.css">
+    <link rel="stylesheet" href="lib/ex.css">
+    <link rel="stylesheet" href="../tab.css">
+</head>
+<body>
+   <div class="weui_tab">
+        <div id="tabNav" class="weui_navbar">
+            <div class="weui_navbar_item weui_bar_item_on">
+                选项一
+            </div>
+            <div class="weui_navbar_item">
+                选项二
+            </div>
+            <div class="weui_navbar_item">
+                选项三
+            </div>
+        </div>
+        <div id="tabContent" class="weui_tab_bd">
+            <div class="tab_item on">1</div>
+            <div class="tab_item">2222</div>
+            <div class="tab_item">333333</div>
+        </div>
+    </div>
+<script src="lib/zepto.min.js"></script>
+<script src="lib/zepto.ext.js"></script>
+<script src="../tab.js"></script>
+
+<script type="text/javascript">
+$.tab({
+    hasBorder: true,
+    skinClass: '',
+    navId: 'tabNav',
+    contentId: 'tabContent'
+});
+</script>
+
+</body>
+</html>

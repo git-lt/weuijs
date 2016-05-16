@@ -1,0 +1,4 @@
+.weui_accordion_body { overflow-y: hidden; -webkit-transition: height .3s linear; transition: height .3s linear;  }
+.weui_accordion_content { padding:10px 15px 10px 15px; }
+.weui_cell.active {background-color: #ECECEC;}
+.weui_cell.active .weui_cell_ft:after{-webkit-transform:rotate(135deg);transform:rotate(135deg);}
