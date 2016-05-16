@@ -322,6 +322,8 @@
         if (typeof cb === 'function') {
           cb.call(this, modal);
         }
+
+        $('html').addClass('no-scroll');
         return true;
     };
 
@@ -370,7 +372,7 @@
         if (isModal &&  defaults.modalStack ) {
             $.modalStackClearQueue();
         }
-
+        $('html').removeClass('no-scroll');
         return true;
     };
 
@@ -424,7 +426,6 @@
         offcanvasCloseByMask:true,
         modalButtonOk: '确定',
         modalButtonCancel: '取消',
-        modalPreloaderTitle: '加载中',
         modalContainer : document.body ? document.body : 'body'
     };
 }(Zepto, window, undefined);

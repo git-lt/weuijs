@@ -4,6 +4,9 @@ body {min-width: 320px; max-width: 640px; margin:0 auto;}
 .bg-danger {background-color: #f44336; color:#fff;}
 .color-danger {color:#f44336;}
 
+.no-scroll {overflow: hidden !important; height: 100% !important;}
+.no-scroll body {overflow: hidden; height: 100%;}
+
 /* mask */
 .weui_mask {opacity: 0; visibility: hidden; background: rgba(0, 0, 0, 0); -webkit-transition: background-color .3s; transition: background-color .3s; }
 .weui_mask.weui_mask_visible,.popup-overlay.weui_mask_visible {opacity: 1; visibility: visible;background-color: rgba(0,0,0,.6);}

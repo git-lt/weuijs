@@ -16,7 +16,6 @@ gulp.task('build:js', function (done) {
         ' * Licensed under the <%= pkg.license %> license',
         ' */',
         ''].join('\n');
-
     gulp.src('src/*.js')
         .pipe(concat('weui.js'))
         .pipe(header(notes, {pkg: pkg}))
@@ -31,12 +30,6 @@ gulp.task('build:css', function(done){
     gulp.src('src/*.css')
         .pipe(concat('weui-ext.css'))
         .pipe(gulp.dest('dist'))
-        .on('end',done);
-});
-
-gulp.task('build:demos', function(done){
-    gulp.src('src/*')
-        .pipe(gulp.dest('demos/mods'))
         .on('end',done);
 });
 
