@@ -9,10 +9,28 @@
     <link rel="stylesheet" href="../notification.css">
 </head>
 <body>
-
-
+  <div class="container">
+    <div class="cell">
+      <div class="hd">
+          <h1 class="page_title">消息通知</h1>
+      </div>
+      <div class="bd">
+        <a href="javascript:;" id="btnTopTips" class="weui_btn weui_btn_default">notification 显示一个通知</a>
+      </div>
+    </div>
+  </div>
+  
 <script src="lib/zepto.min.js"></script>
 <script src="lib/zepto.ext.js"></script>
 <script src="../notification.js"></script>
+
+<script type="text/javascript">
+
+$('#btnTopTips').on('click', function(){
+  $.notification('这是一个通知：）');
+});
+
+</script>
+
 </body>
 </html>
