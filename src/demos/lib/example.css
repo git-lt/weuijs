@@ -1,0 +1,82 @@
+/*Prettify.css*/
+.pln{color:#000}@media screen{.str{color:#080}.kwd{color:#008}.com{color:#800}.typ{color:#606}.lit{color:#066}.pun,.opn,.clo{color:#660}.tag{color:#008}.atn{color:#606}.atv{color:#080}.dec,.var{color:#606}.fun{color:red}}@media print,projection{.str{color:#060}.kwd{color:#006;font-weight:bold}.com{color:#600;font-style:italic}.typ{color:#404;font-weight:bold}.lit{color:#044}.pun,.opn,.clo{color:#440}.tag{color:#006;font-weight:bold}.atn{color:#404}.atv{color:#060}}pre.prettyprint{padding:10px;border:1px solid #888}ol.linenums{margin-top:0;margin-bottom:0}li.L0,li.L1,li.L2,li.L3,li.L5,li.L6,li.L7,li.L8{list-style-type:none}li.L1,li.L3,li.L5,li.L7,li.L9{background:#eee}
+/*! Color themes for Google Code Prettify | MIT License | github.com/jmblog/color-themes-for-google-code-prettify */
+.prettyprint{background:#f5f7ff;font-family:Menlo,Bitstream Vera Sans Mono,DejaVu Sans Mono,Monaco,Consolas,monospace;border:0!important}.pln{color:#202746}ol.linenums{margin-top:0;margin-bottom:0;color:#202746}li.L0,li.L1,li.L2,li.L3,li.L4,li.L5,li.L6,li.L7,li.L8,li.L9{padding-left:1em;background-color:#f5f7ff;list-style-type:decimal}@media screen{.str{color:#ac9739}.kwd{color:#6679cc}.com{color:#202746}.typ{color:#3d8fd1}.lit{color:#c76b29}.pun{color:#202746}.opn{color:#202746}.clo{color:#202746}.tag{color:#c94922}.atn{color:#c76b29}.atv{color:#22a2c9}.dec{color:#c76b29}.var{color:#c94922}.fun{color:#3d8fd1}}
+
+.example {
+  top:0;
+  margin: 20px 0;
+}
+.example .device {
+  margin: 0 auto;
+  position: relative;
+  background: #111;
+  box-shadow: 0px 0px 0px 2px #aaa;
+  z-index: 1000;
+  padding: 100px 30px;
+  border-radius: 55px;
+  /*position: fixed;*/
+}
+.example .device:after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  left: 50%;
+  margin-left: -30px;
+  bottom: 20px;
+  border-radius: 100%;
+  box-sizing: border-box;
+  border: 5px solid #333;
+}
+.example .device:before {
+  content: '';
+  width: 60px;
+  height: 10px;
+  border-radius: 10px;
+  position: absolute;
+  left: 50%;
+  margin-left: -30px;
+  background: #333;
+  top: 50px;
+}
+.example .device-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.example iframe {
+  max-width: 100%;
+}
+.example .device-v {
+  padding: 100px 30px;
+}
+.example .device-v + .info {
+  margin-left: 424px;
+}
+.example .device-h {
+  max-width: 1024px;
+  padding: 30px 80px;
+  border-radius: 30px;
+}
+.example .device-h:after {
+  left: auto;
+  right: 10px;
+  bottom: auto;
+  top: 50%;
+  margin-left: 0;
+  margin-top: -30px;
+}
+.example .device-h:before {
+  width: 10px;
+  height: 60px;
+  top: 50%;
+  margin-left: auto;
+  margin-top: -30px;
+  left: 35px;
+}
+.example .device-right {
+  float: right;
+  margin: 0;
+  margin-right: 40px;
+}
